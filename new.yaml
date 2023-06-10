@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: creating two instances using cloudformation
+
+
+Resources:
+  ChetanaJSEC2Instance1:
+    Type: AWS::EC2::Instance
+    Properties: 
+      ImageId: "ami-0d51edf70b350eb30"
+      InstanceType: t2.micro
+      KeyName: chetana.pem
+   
+  ChetanaJSEC2Instance2:
+    Type: AWS::EC2::Instance
+    Properties: 
+      ImageId: "ami-0d51edf70b350eb30"
+      InstanceType: t2.micro
+      KeyName: chetana.pem
+
+  
+  ChetanaS3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: "chetana-s3bucket"
+  ChetanaS3Role:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: chetana-s3-access-policy
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+      Description: Role to provide access to S3
+      Policies:
+        - PolicyName: Chetana-read-write-s3-policy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: "*"
+                Resource: "*"
+      
+
+    

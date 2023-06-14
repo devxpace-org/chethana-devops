@@ -1,0 +1,63 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: autoscaling 
+
+Resources:
+  ChetanaLaunchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    Properties: 
+      LaunchTemplateData: 
+        ImageId: ami-09988af04120b3591
+        InstanceType: t2.micro
+        KeyName: chetanajs
+      LaunchTemplateName: ChetanaLaunchTemplate
+
+
+
+  ChetanaNetworkLoadBalancer: 
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Name: ChetanaNetworkLoadBalancer
+      Scheme: internet-facing
+      Type: network
+      Subnets:
+        - subnet-0f20cd810f0a56064
+
+  
+  ChetanaTargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      Name: ChetanaTargetGroup
+      Port: 80
+      Protocol: TCP
+      VpcId: vpc-07f878be34a5c3700
+
+  
+  ChetanaNetworkLoadBalancerG:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      AutoScalingGroupName: chetanaautoscalinggroup 
+      LaunchTemplate:
+        LaunchTemplateId: lt-0382b2c08ac11d367
+        Version: !GetAtt ChetanaLaunchTemplate.LatestVersionNumber
+      AvailabilityZones: 
+        - us-east-1a
+        - us-east-1d
+      DesiredCapacity: 2
+      MinSize: 1
+      MaxSize: 3
+  
+
+  chetanaListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      LoadBalancerArn: !Ref ChetanaNetworkLoadBalancer
+      Port: 80
+      Protocol: TCP
+      DefaultActions:
+        - Type: forward
+          TargetGroupArn: !Ref ChetanaTargetGroup
+    
+
+  
+
+

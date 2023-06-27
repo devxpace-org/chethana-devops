@@ -1,9 +1,9 @@
 FROM node:20-alpine
 
-COPY package.json /app/chethana-devops/
-COPY src /app/chethana-devops/
+COPY package.json /app/nicejob/
+COPY src /app/nicejob/
 
-WORKDIR /app/chethana-devops/
+WORKDIR /app/nicejob/
 
 RUN npm install
 

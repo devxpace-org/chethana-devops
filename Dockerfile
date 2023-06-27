@@ -7,4 +7,4 @@ WORKDIR /app/chethana-devops/
 
 RUN npm install
 
-ENTRYPOINT ["node", "helloworld.js"]
+ENTRYPOINT ["node", "nicejob.js"]

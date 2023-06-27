@@ -1,9 +1,9 @@
 FROM node:20-alpine
 
-COPY package.json /app/chethana-devops/
-COPY src /app/chethana-devops/
+COPY package.json /app/helloworld/
+COPY src /app/helloworld/
 
-WORKDIR /app/chethana-devops/
+WORKDIR /app/helloworld/
 
 RUN npm install
 

@@ -7,7 +7,7 @@ pipeline {
         stage('Build and Deploy') {
             steps {
                 
-                sh 'sudo docker build -t chetana98/teams:shahbuddin 10apps/'   
+                sh 'sudo docker build -t chetana98/teams:shahbuddin 10apps/src'   
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'  
                 sh 'sudo docker push chetana98/teams:shahbuddin'
             }

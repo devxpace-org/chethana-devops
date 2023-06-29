@@ -7,4 +7,4 @@ WORKDIR /app/helloworld/
 
 RUN npm install
 
-ENTRYPOINT ["node", "maazin.js"]
+ENTRYPOINT ["node", "raja.js"]

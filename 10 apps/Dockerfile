@@ -7,4 +7,4 @@ WORKDIR /app/helloworld/
 
 RUN npm install
 
-ENTRYPOINT ["node", "raja.js"]
+ENTRYPOINT ["node", "praneeth.js"]

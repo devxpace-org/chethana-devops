@@ -7,4 +7,4 @@ WORKDIR /app/helloworld/
 
 RUN npm install
 
-ENTRYPOINT ["node", "teju.js"]
+ENTRYPOINT ["node", "sumanth.js"]

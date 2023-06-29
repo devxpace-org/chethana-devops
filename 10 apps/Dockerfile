@@ -7,4 +7,4 @@ WORKDIR /app/helloworld/
 
 RUN npm install
 
-ENTRYPOINT ["node", "helloworld5times.js"]
+ENTRYPOINT ["node", "chetana.js"]

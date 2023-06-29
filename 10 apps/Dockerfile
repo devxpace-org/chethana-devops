@@ -7,4 +7,4 @@ WORKDIR /app/helloworld/
 
 RUN npm install
 
-ENTRYPOINT ["node", "sumanth.js"]
+ENTRYPOINT ["node", "maazin.js"]

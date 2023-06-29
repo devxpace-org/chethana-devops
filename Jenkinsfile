@@ -9,9 +9,9 @@ pipeline {
     stages {
         stage('Build and Deploy') {
             steps {
-                sh 'sudo docker build -t chetana98/helloworld:harshitha .'
+                sh 'sudo docker build -t chetana98/helloworld:chetana .'
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'  
-                sh 'sudo docker push chetana98/helloworld:harshitha'
+                sh 'sudo docker push chetana98/helloworld:chetana'
                
                            
             }

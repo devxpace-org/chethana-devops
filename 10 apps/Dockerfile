@@ -7,4 +7,4 @@ WORKDIR /app/helloworld/
 
 RUN npm install
 
-ENTRYPOINT ["node", "karthik.js"]
+ENTRYPOINT ["node", "shahbuddin.js"]

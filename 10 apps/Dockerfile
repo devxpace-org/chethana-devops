@@ -7,4 +7,4 @@ WORKDIR /app/helloworld/
 
 RUN npm install
 
-ENTRYPOINT ["node", "harshitha.js"]
+ENTRYPOINT ["node", "supriya.js"]

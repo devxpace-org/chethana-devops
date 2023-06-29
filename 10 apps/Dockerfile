@@ -7,4 +7,4 @@ WORKDIR /app/helloworld/
 
 RUN npm install
 
-ENTRYPOINT ["node", "chetana.js"]
+ENTRYPOINT ["node", "harshitha.js"]

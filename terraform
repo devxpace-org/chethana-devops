@@ -1,0 +1,72 @@
+provider "aws" {
+  region = "us-east-2"                  # Replace with your desired AWS region
+}
+
+## MY INSTANCE
+resource "aws_instance" "myinstance" {
+  ami   = "ami-098dd3a86ea110896"                               # Replace with your desired AMI ID
+  instance_type = "t2.micro"                                             # Replace with your desired instance type
+  key_name      = "tf"                          # Replace with the name of your EC2 key pair
+  tags = {
+    Name = "MyEC2Instance"                                                      # Replace with your desired instance name
+  } 
+}
+
+## MY VPC
+resource "aws_vpc" "vpc" {
+  cidr_block = "10.0.0.0/16"                                 # Replace with your desired VPC CIDR block
+
+  tags = {
+    Name = "MyVPC"                                                # Replace with your desired VPC name
+  }
+}
+
+## Public Subnet 1 
+resource "aws_subnet" "public_subnet_1" {
+  vpc_id = aws_vpc.vpc.id
+  cidr_block = "10.0.1.0/24"
+  availability_zone = "us-east-2a"  
+   tags = {
+    Name = "PUBSUBNET1"                                                
+}
+}
+
+## Public Subnet 2 
+resource "aws_subnet" "public_subnet_2" {
+  vpc_id = aws_vpc.vpc.id
+  cidr_block = "10.0.2.0/24"
+  availability_zone = "us-east-2b"  
+  tags = {
+    Name = "PUBSUBNET2"                                              
+  }
+}
+
+##private subnet 1
+resource "aws_subnet" "private_subnet_1" {
+  vpc_id            = aws_vpc.vpc.id
+  cidr_block        = "10.0.3.0/24"
+  availability_zone = "us-east-2a"  
+  tags = {
+    Name = "PRISUBNET1"                                                
+   }
+}
+
+##private subnet 2
+resource "aws_subnet" "private_subnet_2" {
+  vpc_id            = aws_vpc.vpc.id
+  cidr_block        = "10.0.4.0/24"
+  availability_zone = "us-east-2b"  
+  tags = {
+    Name = "PRISUBNET2"                                               
+}
+}
+
+
+
+
+
+
+
+  
+  
+  
